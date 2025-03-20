@@ -1,19 +1,6 @@
 import numpy as np
 from sklearn.base import ClassifierMixin
-# from source.kernel import Kernel
-#from source.smo import
 
-
-#
-# class NH:
-#     def __init__(self, a: float, b: float):
-#         self.a = a
-#         self.b = b
-#
-#     def __contains__(self, num: float):
-#         if num > self.a and num < self.b:
-#             return True
-#         return False
 
 class Kernel:
     def __init__(self, kernel='linear', degree=2, gamma=1.0):
@@ -37,19 +24,19 @@ class Kernel:
         for i in range(len(x1)):
             x.append(x1[i] - x2[i])
         norm = np.linalg.norm(x)
-        return np.exp(self.gamma*norm)
+        return np.exp(self.gamma * norm)
 
 
 
 
     def __call__(self, x1: np.ndarray, x2: np.ndarray):
         if self.kernel_type not in self.kernels:
-            raise ValueError(f"Unknown kernel type: {self.kernel_type}")
+            raise ValueError(f'unknown kernel type: {self.kernel_type}')
         return self.kernels[self.kernel_type](x1, x2)
 
 
 class SVM(ClassifierMixin):
-    def __init__(self, kernel='rbf', max_iter=1000, tol=1e-3, C=1.0, degree=2, gamma=1.0, eps=0.01):
+    def __init__(self, kernel='linear', max_iter=1000, tol=1e-3, C=1.0, degree=2, gamma=1.0, eps=0.01):
         self.tol = tol
         self.C = C
         self.max_iter = max_iter
