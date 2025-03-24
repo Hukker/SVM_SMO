@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools==77.0.3", "wheel", "pybind11==2.13.6"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "qpproblem-smo-solver-module"
+version = "0.3.0"
+description = "C++ module solving QP problem appearing while training Support Vector Machine (binary classification) with regularization parametr C"
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    "pybind11==2.13.6",
+    "setuptools==77.0.3",
+]
+
